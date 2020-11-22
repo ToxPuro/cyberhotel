@@ -1,0 +1,31 @@
+<h1>Shop</h1>
+    <ul>
+        {% for receipt in Receipts %}
+        <li><a href="/shop/receipt/{{ receipt.id }}/">{{ receipt.hotel.name }}</a></li>
+    {% endfor %}
+    </ul>
+    <form method="GET">
+        <input type="search", name="search">
+        <button type="submit"> Search </button>
+    </form>
+    <ul>
+        {% for hotel in Hotels2 %}
+        <li><a href="/shop/hotel/{{ hotel.id }}/">{{ hotel.name }}</a></li>
+    {% endfor %}
+    {% for hotel in Hotels %}
+    {{hotel}}
+    {% endfor %}
+    </ul> 
+    <form action="logout/" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+    </form>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="msg" cols="40" rows="5"></textarea>
+        <input type="submit" value="Send">
+    </form>
+<h2>Comments </h2>
+        {% for msg in messages %}
+        {{msg.content|safe}}
+        {% endfor %}
